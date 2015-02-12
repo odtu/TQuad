@@ -1,10 +1,10 @@
-Used Material
+**Used Material**
 ============
-1- Arduino Uno R3
-2- Joystick in x and y axises extracted from an old gamepad
-3- Breadboard
-4- A few cables
-5- A resistor (100 ohm) \\the value of resistor changes the max and min values read in Serial Port
+* Arduino Uno R3
+* Joystick in x and y axises extracted from an old gamepad
+* Breadboard
+* A few cables
+* A resistor (100 ohm) \\the value of resistor changes the max and min values read in Serial Port
 
 ============
 
