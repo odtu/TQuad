@@ -18,7 +18,7 @@ Design of the power converters and transmission cable
 #### Control
 Design of the flight control system through the tethered cable
 
-*  dfd
+*  Hasan Burhan Beytur
 *  fdf
 
 
