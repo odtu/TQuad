@@ -19,6 +19,6 @@ Design of the power converters and transmission cable
 Design of the flight control system through the tethered cable
 
 *  Hasan Burhan Beytur
-*  fdf
+*  Saddam Heydarov
 
 
