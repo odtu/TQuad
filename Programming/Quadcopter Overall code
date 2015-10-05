@@ -1,0 +1,110 @@
+// Tethered quadcopter project  
+//Draft code
+//attach throttle to arduino pin 5
+
+#include <Servo.h>
+
+Servo motor1, motor2, motor3,motor4,throttle;
+
+int UD = 0;
+int LR = 0;
+
+//m1 and m2 for up-down and m3 m4 left right, thr1 and thr2 for throttle down and up; throttle will be used on one axis
+int m1=0, m2=0,  m3=0, m4=0, thr1=0, thr2=0;
+
+
+
+
+void setup(){
+  // pin connection
+throttle.attach(5);
+motor1.attach(3);
+motor2.attach(11);
+motor3.attach(6);
+motor4.attach(10);  
+
+}
+
+void loop(){
+
+  UD = analogRead(0);
+  LR = analogRead(1);
+
+  
+if(LR==518 || UD==510){ 
+  // throttle
+ if(UD < 510 ){ if(LR==518){ //throttle: land
+  thr2=map(UD,510,0,90,45);
+  throttle.write(thr2);
+  delay(1);
+  }  
+}
+ 
+  
+else if(UD > 510){if(LR==518){
+    thr1=map(UD,510,1023,90,135);
+    throttle.write(thr1); // throttle: lift 
+    delay(1);
+  }
+  }
+  
+ 
+  // do nothing
+else if(LR < 518){if(UD==510){
+   
+delay(1);
+  }
+  }
+  
+else if(LR > 518){if(UD==510){
+   
+   delay(1);
+  }
+}
+}
+//////////////////////////////////////////////  
+ // combination of two axis -- >> for moving right left from back 
+else if(LR != 518 && UD != 510)
+{
+if(LR > 518 && UD>510){ //135 degree position -->>  move right
+ 
+  m1=map(LR,518,1023,90,135);
+  motor1.write(m1);
+  motor2.write(90);
+  motor3.write(90);
+  motor4.write(90);
+  delay(1);
+
+  }
+else if(LR > 518 && UD<510){  //-135 degree position -->> move forward
+ 
+  m4=map(UD,510,0,90,135);
+
+  motor1.write(90);
+  motor2.write(90);
+  motor3.write(90);
+  motor4.write(m4);
+  delay(1);
+
+  }
+else if(LR < 518 && UD<510){ //-45 degree position -->> move left
+  m2=map(LR,518,0,90,135);
+  motor1.write(90);
+  motor2.write(m2);
+  motor3.write(90);
+  motor4.write(90);
+  delay(1);
+
+
+  }
+else if (LR < 518 && UD>510){ //45 degree position -->> move backward
+  m3=map(UD,510,1023,90,135);
+  motor1.write(90);
+  motor2.write(90);
+  motor3.write(m3);
+  motor4.write(90);
+  delay(1);
+  }
+}
+  delay(10);
+}
